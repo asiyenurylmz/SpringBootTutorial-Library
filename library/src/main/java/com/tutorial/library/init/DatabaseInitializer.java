@@ -1,26 +1,14 @@
 package com.tutorial.library.init;
 
-import java.time.LocalDateTime;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
-
-import javax.persistence.EntityNotFoundException;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
-import com.tutorial.library.entity.BookEntity;
-import com.tutorial.library.entity.CustomerEntity;
-import com.tutorial.library.entity.LibraryEntity;
-import com.tutorial.library.repository.BookRepository;
 import com.tutorial.library.service.BookEntityService;
 import com.tutorial.library.service.CustomerEntityService;
 import com.tutorial.library.service.LibraryEntityService;
 import com.tutorial.library.service.StockInformationEntityService;
 
-import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 @Component

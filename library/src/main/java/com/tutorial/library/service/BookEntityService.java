@@ -17,30 +17,30 @@ import lombok.extern.slf4j.Slf4j;
 public class BookEntityService {
 	@Autowired
 	private BookRepository repository;
-	
+
 	public BookEntity save(BookEntity book) {
 		return repository.save(book);
 	}
-	
+
 	public Optional<BookEntity> save(Long id) {
 		return repository.findById(id);
 	}
-	
+
 	public void remove(BookEntity book) {
 		repository.delete(book);
 		log.info("Book: " + book + " removed.");
 	}
-	
+
 	public void remove(Long id) {
 		BookEntity book = repository.findById(id).orElseThrow(EntityNotFoundException::new);
 		remove(book);
 	}
-	
-	public Optional<BookEntity> findByName(String name){
+
+	public Optional<BookEntity> findByName(String name) {
 		return repository.findByName(name);
 	}
-	
-	public Optional<BookEntity> findById(int id){
+
+	public Optional<BookEntity> findById(Long id) {
 		return repository.findById(id);
 	}
 }

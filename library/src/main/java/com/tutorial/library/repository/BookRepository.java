@@ -10,5 +10,4 @@ import com.tutorial.library.entity.BookEntity;
 @Repository
 public interface BookRepository extends JpaRepository<BookEntity, Long> {
 	Optional<BookEntity> findByName(String name);
-	Optional<BookEntity> findById(int id);
 }

@@ -10,5 +10,6 @@ import com.tutorial.library.entity.LibraryEntity;
 @Repository
 public interface LibraryRepository extends JpaRepository<LibraryEntity, Long> {
 	List<LibraryEntity> findByCity(String city);
+
 	List<LibraryEntity> findByCityAndDistrict(String city, String district);
 }
