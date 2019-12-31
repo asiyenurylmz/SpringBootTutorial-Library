@@ -17,5 +17,4 @@ public interface StockInformationRepository extends JpaRepository<StockInformati
 	List<StockInformationEntity> findByLibraryAndBook(LibraryEntity library, BookEntity book);
 
 	List<StockInformationEntity> findByBook(BookEntity book);
-
 }
