@@ -41,9 +41,5 @@ public class LibraryController {
 	public LibraryEntity add(@RequestBody LibraryEntity library) {
 		return libraryEntityService.save(library);
 	}
-//	public LibraryDTO add(@RequestBody LibraryDTO dto) {
-//	//	libraryEntityService.save(mapper.mapDtoToEntity(dto));
-//		return mapper.mapEntityToDto(libraryEntityService.save(mapper.mapDtoToEntity(dto)));
-//	}
 
 }
