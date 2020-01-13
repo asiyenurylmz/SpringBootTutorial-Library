@@ -1,5 +1,6 @@
 package com.tutorial.library.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import javax.persistence.EntityNotFoundException;
@@ -42,5 +43,9 @@ public class BookEntityService {
 
 	public Optional<BookEntity> findById(Long id) {
 		return repository.findById(id);
+	}
+	
+	public List<BookEntity> findAll() {
+		return repository.findAll();
 	}
 }

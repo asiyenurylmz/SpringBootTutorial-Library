@@ -4,10 +4,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import com.tutorial.library.entity.BookEntity;
+import com.tutorial.library.entity.LibraryEntity;
 import com.tutorial.library.service.BookEntityService;
 import com.tutorial.library.service.CustomerEntityService;
 import com.tutorial.library.service.LibraryEntityService;
-import com.tutorial.library.service.StockInformationEntityService;
+import com.tutorial.library.service.StockEntityService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -22,7 +24,7 @@ public class DatabaseInitializer implements CommandLineRunner {
 	@Autowired
 	private CustomerEntityService customerService;
 	@Autowired
-	private StockInformationEntityService stockService;
+	private StockEntityService stockService;
 
 	
 	@SuppressWarnings("null")
@@ -32,7 +34,7 @@ public class DatabaseInitializer implements CommandLineRunner {
 //		book03.setName("Book03");
 //		book03.setAuthor("Author03");
 //		book03 = bookService.save(book03);
-//
+////
 //		BookEntity book02 = new BookEntity();
 //		book02.setName("Book02");
 //		book02.setAuthor("Author02");

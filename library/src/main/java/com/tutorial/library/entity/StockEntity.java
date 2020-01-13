@@ -1,5 +1,6 @@
 package com.tutorial.library.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -8,6 +9,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,8 +19,8 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-@Table(name = "stock_information")
-public class StockInformationEntity extends BaseEntity {
+@Table(name = "stock_information", uniqueConstraints = { @UniqueConstraint( columnNames = { "library_id", "book_id" } ) })
+public class StockEntity extends BaseEntity {
 
 	@Id
 	@SequenceGenerator(name = "stock_information_id_seq", allocationSize = 1)
@@ -33,6 +35,7 @@ public class StockInformationEntity extends BaseEntity {
 	@JoinColumn(name = "book_id")
 	private BookEntity book;
 
-	public Integer count;
+	@Column(name = "count")
+	private Integer count;
 
 }

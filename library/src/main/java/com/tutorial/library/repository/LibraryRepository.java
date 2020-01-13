@@ -1,6 +1,7 @@
 package com.tutorial.library.repository;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -12,4 +13,6 @@ public interface LibraryRepository extends JpaRepository<LibraryEntity, Long> {
 	List<LibraryEntity> findByCity(String city);
 
 	List<LibraryEntity> findByCityAndDistrict(String city, String district);
+
+	Optional<LibraryEntity> findByName(String name);
 }
