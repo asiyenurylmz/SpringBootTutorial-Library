@@ -19,32 +19,33 @@ import com.tutorial.library.model.StockDTO;
 @Priority(value = 0)
 @org.mapstruct.Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring")
 public abstract class Mapper {
-	
+
 //	public abstract BaseDTO mapEntityToDto(BaseEntity entity);
 //	
 //	public abstract BaseEntity mapDtoToEntity(BaseDTO dto);
 //	
 //	public abstract void updateEntity(BaseDTO dto, @MappingTarget BaseEntity entity);
-	
-	//Book
+
+	// Book
 	public abstract BookDTO mapEntityToDto(BookEntity entity);
 
 	public abstract BookEntity mapDtoToEntity(BookDTO dto);
 
 	public abstract void updateEntity(BookDTO dto, @MappingTarget BookEntity entity);
-	
-	
-	//Library
+
+	// Library
 	public abstract LibraryDTO mapEntityToDto(LibraryEntity entity);
-	
+
 	public abstract LibraryEntity mapDtoToEntity(LibraryDTO dto);
-	
+
 	public abstract void updateEntity(LibraryDTO dto, @MappingTarget LibraryEntity entity);
-	
-	//Stock	
+
+	// Stock
 	public abstract StockDTO mapEntityToDto(StockEntity entity);
 
 	public abstract StockEntity mapDtoToEntity(StockDTO dto);
 
 	public abstract void updateEntity(StockDTO dto, @MappingTarget StockEntity entity);
+
+	public abstract List<LibraryDTO> mapEntityToDTOList(List<LibraryEntity> libraries);
 }

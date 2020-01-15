@@ -43,22 +43,22 @@ public class StockController {
 
 	@Autowired
 	private Mapper mapper;
-
-//	@PutMapping("/add")
-//	public StockEntity add(@RequestBody StockEntity stock) {
-//		return stockEntityService.save(stock);
-//	}
 	
 	
 	@PutMapping("/add")
 	public StockEntity add(@RequestBody StockDTO stock) {
-		
-		return stockEntityService.saveNew(stock);
-		
-		
-	//	return stockInformationEntityService.save(stock);
+		return stockEntityService.addNew(stock);
 	}
 
+	@GetMapping("/list/library/{bookId}")
+	public List<LibraryDTO> listLibrary(@PathVariable Long bookId) {
+		return stockEntityService.listLibrary(bookId);
+	}
+	
+	@GetMapping("/list/book/{libraryId}")
+	public List<BookDTO> listBook(@PathVariable Long libraryId) {
+		return stockEntityService.listBook(libraryId);
+	}
 //	@GetMapping("/update/{libraryId}/{bookId}/{count}")
 //	public StockEntity update(@PathVariable Long libraryId,...){
 //		
