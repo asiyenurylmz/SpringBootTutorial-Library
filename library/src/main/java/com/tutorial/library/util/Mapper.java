@@ -20,6 +20,12 @@ import com.tutorial.library.model.StockDTO;
 @org.mapstruct.Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring")
 public abstract class Mapper {
 	
+//	public abstract BaseDTO mapEntityToDto(BaseEntity entity);
+//	
+//	public abstract BaseEntity mapDtoToEntity(BaseDTO dto);
+//	
+//	public abstract void updateEntity(BaseDTO dto, @MappingTarget BaseEntity entity);
+	
 	//Book
 	public abstract BookDTO mapEntityToDto(BookEntity entity);
 
@@ -41,6 +47,4 @@ public abstract class Mapper {
 	public abstract StockEntity mapDtoToEntity(StockDTO dto);
 
 	public abstract void updateEntity(StockDTO dto, @MappingTarget StockEntity entity);
-
-	public abstract List<StockDTO> mapEntityToDto(List<StockEntity> listBookEntities);
 }

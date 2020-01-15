@@ -1,6 +1,10 @@
 package com.tutorial.library.model;
 
+import javax.persistence.Column;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -8,9 +12,13 @@ import lombok.Setter;
 @Getter
 @Setter
 public class LibraryDTO extends BaseDTO {
-	@JsonIgnore
 	private Long id;
 	private String name;
 	private String city;
 	private String district;
+	
+	@JsonInclude(value = Include.NON_NULL)
+	private Long latitude;
+	@JsonInclude(value = Include.NON_NULL)
+	private Long longitude;
 }

@@ -7,6 +7,7 @@ import java.util.stream.Stream;
 
 import javax.persistence.EntityNotFoundException;
 
+import org.hibernate.annotations.Cascade;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,12 +28,14 @@ import com.tutorial.library.service.LibraryEntityService;
 import com.tutorial.library.service.StockEntityService;
 import com.tutorial.library.util.Mapper;
 
+import lombok.Getter;
+
 @RestController
 @RequestMapping("/stock")
 public class StockController {
 
 	@Autowired
-	private StockEntityService stockInformationEntityService;
+	private StockEntityService stockEntityService;
 	@Autowired
 	private LibraryEntityService libraryService;
 	@Autowired
@@ -41,11 +44,34 @@ public class StockController {
 	@Autowired
 	private Mapper mapper;
 
+//	@PutMapping("/add")
+//	public StockEntity add(@RequestBody StockEntity stock) {
+//		return stockEntityService.save(stock);
+//	}
+	
+	
 	@PutMapping("/add")
-	public StockEntity add(@RequestBody StockEntity stock) {
-		return stockInformationEntityService.save(stock);
+	public StockEntity add(@RequestBody StockDTO stock) {
+		
+		return stockEntityService.saveNew(stock);
+		
+		
+	//	return stockInformationEntityService.save(stock);
 	}
 
+//	@GetMapping("/update/{libraryId}/{bookId}/{count}")
+//	public StockEntity update(@PathVariable Long libraryId,...){
+//		
+//	}
+
+	
+	//http:......./stock/{libraryId}/{bookId}/15
+	
+	//http:......./stock/{libraryId}/{bookId}/-15
+	
+	//http:......./stock/{libraryId}/{bookId}/add/15
+	
+	//http:......./stock/{libraryId}/{bookId}/sub/15
 
 
 
