@@ -27,13 +27,13 @@ public class LibraryEntity extends BaseEntity {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "library_id_seq")
 	private Long id;
 
-	@Column(name = "name")
+	@Column(nullable = false)
 	private String name;
 
-	@Column(name = "city")
+	@Column(nullable = false)
 	private String city;
 
-	@Column(name = "district")
+	@Column(nullable = false)
 	private String district;
 
 	@JsonInclude(value = Include.NON_NULL)

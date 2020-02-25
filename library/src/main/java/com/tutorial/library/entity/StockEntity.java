@@ -1,6 +1,5 @@
 package com.tutorial.library.entity;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,23 +19,23 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-@Table(name = "stock_information", uniqueConstraints = { @UniqueConstraint( columnNames = { "library_id", "book_id" } ) })
+@Table(name = "stock", uniqueConstraints = { @UniqueConstraint( columnNames = { "library_id", "book_id" } ) })
 public class StockEntity extends BaseEntity {
 
 	@Id
-	@SequenceGenerator(name = "stock_information_id_seq", allocationSize = 1)
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "stock_information_id_seq")
+	@SequenceGenerator(name = "stock_id_seq", allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "stock_id_seq")
 	private Long id;
 
 	@ManyToOne
-	@JoinColumn(name = "library_id")
+	@JoinColumn(name = "library_id", nullable = false)
 	private LibraryEntity library;
 
 	@ManyToOne
-	@JoinColumn(name = "book_id")
+	@JoinColumn(name = "book_id", nullable = false)
 	private BookEntity book;
 
-	@Column(name = "count")
+	@Column(nullable = false)
 	private Integer count;
 
 }

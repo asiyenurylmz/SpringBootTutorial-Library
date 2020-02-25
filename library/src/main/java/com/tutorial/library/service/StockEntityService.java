@@ -1,22 +1,20 @@
 package com.tutorial.library.service;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
-import javax.validation.constraints.Size;
+import javax.persistence.EntityNotFoundException;
+import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
 
+import com.tutorial.library.dto.BookDTO;
+import com.tutorial.library.dto.LibraryDTO;
+import com.tutorial.library.dto.StockDTO;
 import com.tutorial.library.entity.BookEntity;
 import com.tutorial.library.entity.LibraryEntity;
 import com.tutorial.library.entity.StockEntity;
-import com.tutorial.library.model.BookDTO;
-import com.tutorial.library.model.LibraryDTO;
-import com.tutorial.library.model.StockDTO;
 import com.tutorial.library.repository.StockRepository;
 import com.tutorial.library.util.Mapper;
 
@@ -42,11 +40,20 @@ public class StockEntityService {
 		return repository.findByBook(book);
 	}
 
-	public List<StockEntity> findByLibraryAndBook(LibraryEntity library, BookEntity book) {
+	public StockEntity findByLibraryAndBook(LibraryEntity library, BookEntity book) {
 		return repository.findByLibraryAndBook(library, book);
 	}
 
-	public StockEntity addNew(StockDTO stock) {
+	public Optional<StockEntity> findById(Long id) {
+		return repository.findById(id);
+	}
+
+	public void rent(StockEntity stock) {
+		stock.setCount(stock.getCount() + 1);
+		this.save(stock);
+	}
+
+	public StockEntity save(StockDTO stock) {
 		StockEntity stockEntity = mapper.mapDtoToEntity(stock);
 		stockEntity.setLibrary(libraryEntityService.findById(stock.getLibrary().getId()).orElseThrow());
 		stockEntity.setBook(bookEntityService.findById(stock.getBook().getId()).orElseThrow());
@@ -65,5 +72,14 @@ public class StockEntityService {
 		List<BookDTO> books = stock.stream().map(s -> mapper.mapEntityToDto(s.getBook())).collect(Collectors.toList());
 		return books;
 	}
+
+	@Transactional
+	public StockDTO update(Long stockId, Integer count) {
+		StockEntity stockEntity = this.findById(stockId).orElseThrow();
+		stockEntity.setCount(stockEntity.getCount() + count);
+		this.save(stockEntity);
+		return mapper.mapEntityToDto(stockEntity);
+	}
+//	
 
 }

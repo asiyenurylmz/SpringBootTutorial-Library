@@ -1,4 +1,4 @@
-package com.tutorial.library.model;
+package com.tutorial.library.dto;
 
 import java.time.LocalDateTime;
 

@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.tutorial.library.dto.LibraryDTO;
 import com.tutorial.library.entity.LibraryEntity;
-import com.tutorial.library.model.LibraryDTO;
 import com.tutorial.library.service.LibraryEntityService;
 import com.tutorial.library.util.Mapper;
 

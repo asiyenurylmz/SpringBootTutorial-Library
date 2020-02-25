@@ -1,8 +1,5 @@
-package com.tutorial.library.model;
+package com.tutorial.library.dto;
 
-import javax.persistence.Column;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 

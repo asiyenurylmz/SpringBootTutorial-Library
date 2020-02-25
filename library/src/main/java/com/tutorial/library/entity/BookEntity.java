@@ -23,10 +23,10 @@ public class BookEntity extends BaseEntity {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "book_id_seq")
 	private Long id;
 
-	@Column(name = "name")
+	@Column(nullable = false)
 	private String name;
 
-	@Column(name = "author")
+	@Column(nullable = false)
 	private String author;
 	
 

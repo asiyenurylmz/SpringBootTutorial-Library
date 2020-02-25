@@ -9,9 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import com.tutorial.library.dto.BookDTO;
 import com.tutorial.library.entity.BookEntity;
 import com.tutorial.library.entity.LibraryEntity;
-import com.tutorial.library.model.BookDTO;
 import com.tutorial.library.repository.LibraryRepository;
 
 @Service

@@ -14,15 +14,17 @@ import com.tutorial.library.entity.StockEntity;
 public interface StockRepository extends JpaRepository<StockEntity, Long> {
 
 	
-
+	//StockEntity findById(Long id);
+	
 	List<StockEntity> findByLibrary(LibraryEntity library);
 
-	List<StockEntity> findByLibraryAndBook(LibraryEntity library, BookEntity book);
+	StockEntity findByLibraryAndBook(LibraryEntity library, BookEntity book);
 
 	List<StockEntity> findByBook(BookEntity book);
 	
 	
 //TODO:	
+//	StockDTO update(StockDTO stock, Integer count);
 //	@Transactional
 //	@Modifying // bak
 //	@Query("update Product p set p.count=p.count-:count where p.id=:id and p.count>=:count")

@@ -7,14 +7,21 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
+
+import org.hibernate.validator.constraints.UniqueElements;
+
+import com.sun.istack.NotNull;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
+//@Table(name = "customer", uniqueConstraints = {@UniqueConstraint(columnNames = { "username", "email", "phone_number" }) })
 @Table(name = "customer")
 public class CustomerEntity extends BaseEntity {
 	@Id
@@ -22,13 +29,17 @@ public class CustomerEntity extends BaseEntity {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "customer_id_seq")
 	private Long id;
 
-	@Column(name = "name")
-	private String name;
+	@Column(nullable = false, unique = true)
+	private String username;
 
-	@Column(name = "email")
+	@Column(nullable = false)
+	private String password;
+
+	@Column(nullable = false)
 	private String email;
 
-	@Column(name = "phone_number")
+//	@Column(name = "phone_number",nullable = false, length=10)
+	@Column(name = "phone_number",nullable = false)
 	private Long phoneNumber;
 
 	@Column(name = "latitude")
