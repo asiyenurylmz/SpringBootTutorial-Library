@@ -23,10 +23,7 @@ public class RentEntityService {
 	public Optional<RentEntity> findById(Long id) {
 		return repository.findById(id);
 	}
-	
-	
-	
-	
+
 	public RentEntity save(RentDTO rentDTO) {
 		RentEntity rentEntity = mapper.mapDtoToEntity(rentDTO);
 		rentEntity.setCustomer(customerEntityService.findById(rentDTO.getCustomer().getId()).orElseThrow());
@@ -38,12 +35,12 @@ public class RentEntityService {
 		}
 		return null;
 	}
-	
+
 	public void delete(RentDTO rentDTO) {
 //		rentDTO.setStock(mapper.mapEntityToDto(this.findById(rentDTO.getId()).orElseThrow()).getStock());
-		rentDTO=mapper.mapEntityToDto(this.findById(rentDTO.getId()).orElseThrow());
-		 repository.delete(this.findById(rentDTO.getId()).orElseThrow());
-		 stockEntityService.update(rentDTO.getStock().getId(), +1);
-		 
+		rentDTO = mapper.mapEntityToDto(this.findById(rentDTO.getId()).orElseThrow());
+		repository.delete(this.findById(rentDTO.getId()).orElseThrow());
+		stockEntityService.update(rentDTO.getStock().getId(), +1);
+
 	}
 }
