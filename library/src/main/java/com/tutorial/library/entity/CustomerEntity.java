@@ -29,7 +29,7 @@ public class CustomerEntity extends BaseEntity {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "customer_id_seq")
 	private Long id;
 
-	@Column(nullable = false, unique = true)
+	@Column(nullable = false)
 	private String username;
 
 	@Column(nullable = false)
