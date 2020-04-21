@@ -1,6 +1,7 @@
 package com.tutorial.library.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -42,14 +43,16 @@ public class RentController {
 //	}
 
 	@PutMapping("/add")
-	public RentEntity add(@RequestBody StockDTO stockDTO) {
+	public ResponseEntity<Long> add(@RequestBody StockDTO stockDTO) {
+		StockDTO stockDTO_=mapper.mapEntityToDto(stockEntityService.findById(stockDTO.getId()).orElseThrow());
 		RentDTO rentDTO = new RentDTO();
 		CustomerEntity entity = session.getCustomerEntity();
 		rentDTO.setCustomer(mapper.mapEntityToDto(customerEntityService.findById(entity.getId()).orElseThrow()));
 		rentDTO.setStock(mapper.mapEntityToDto(stockEntityService.findByLibraryAndBook(
-				libraryEntityService.findById(stockDTO.getLibrary().getId()).orElseThrow(),
-				bookEntityService.findById(stockDTO.getBook().getId()).orElseThrow())));
-		return rentEntityService.save(rentDTO);
+				libraryEntityService.findById(stockDTO_.getLibrary().getId()).orElseThrow(),
+				bookEntityService.findById(stockDTO_.getBook().getId()).orElseThrow())));
+				rentEntityService.save(rentDTO);
+		return ResponseEntity.ok(rentDTO.getId());
 
 	}
 
