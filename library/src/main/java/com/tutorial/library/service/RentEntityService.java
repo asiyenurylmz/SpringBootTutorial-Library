@@ -1,5 +1,6 @@
 package com.tutorial.library.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
@@ -22,6 +23,10 @@ public class RentEntityService {
 
 	public Optional<RentEntity> findById(Long id) {
 		return repository.findById(id);
+	}
+	
+	public List<RentEntity> findByUserId(Long id){
+		return repository.findByCustomer(customerEntityService.findById(id).orElseThrow());
 	}
 
 	public RentEntity save(RentDTO rentDTO) {

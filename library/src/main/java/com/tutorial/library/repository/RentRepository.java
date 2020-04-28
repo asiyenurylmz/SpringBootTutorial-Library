@@ -1,5 +1,6 @@
 package com.tutorial.library.repository;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -14,6 +15,6 @@ public interface RentRepository extends JpaRepository<RentEntity, Long> {
 
 	
 	Optional<RentEntity> findById(Long id);
-	Optional<RentEntity> findByCustomer(CustomerEntity customer);
+	List<RentEntity> findByCustomer(CustomerEntity customer);
 	Optional<RentEntity> findByStock(StockEntity stock);
 }
