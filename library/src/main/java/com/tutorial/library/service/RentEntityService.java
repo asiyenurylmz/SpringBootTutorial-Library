@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 import com.tutorial.library.dto.RentDTO;
+import com.tutorial.library.entity.BookEntity;
 import com.tutorial.library.entity.RentEntity;
 import com.tutorial.library.repository.RentRepository;
 import com.tutorial.library.util.Mapper;
@@ -24,8 +25,8 @@ public class RentEntityService {
 	public Optional<RentEntity> findById(Long id) {
 		return repository.findById(id);
 	}
-	
-	public List<RentEntity> findByUserId(Long id){
+
+	public List<RentEntity> findByUserId(Long id) {
 		return repository.findByCustomer(customerEntityService.findById(id).orElseThrow());
 	}
 
@@ -47,5 +48,9 @@ public class RentEntityService {
 		repository.delete(this.findById(rentDTO.getId()).orElseThrow());
 		stockEntityService.update(rentDTO.getStock().getId(), +1);
 
+	}
+
+	public List<RentEntity> findAll() {
+		return repository.findAll();
 	}
 }

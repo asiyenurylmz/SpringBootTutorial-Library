@@ -1,9 +1,12 @@
 package com.tutorial.library.service;
 
+import java.util.Collection;
+import java.util.List;
 import java.util.Optional;
 
 import javax.persistence.EntityNotFoundException;
 
+import org.springframework.hateoas.EntityModel;
 import org.springframework.stereotype.Service;
 
 import com.tutorial.library.dto.CustomerDTO;
@@ -43,5 +46,9 @@ public class CustomerEntityService {
 //	}
 	public Optional<CustomerEntity> findById(Long id) {
 		return repository.findById(id);
+	}
+
+	public List<CustomerEntity> findAll() {
+		return repository.findAll();
 	}
 }

@@ -30,9 +30,6 @@ public class BookController {
 	private BookEntityService bookEntityService;
 
 	@Autowired
-	private BookRepository repository;
-
-	@Autowired
 	private Mapper mapper;
 
 ////	@RequestMapping(method = RequestMethod.GET, path = "/all")
@@ -44,18 +41,18 @@ public class BookController {
 
 	@GetMapping("/all")
 	CollectionModel<EntityModel<BookEntity>> all() {
-		List<EntityModel<BookEntity>> books = repository.findAll().stream()
+		List<EntityModel<BookEntity>> books = bookEntityService.findAll().stream()
 				.map(book -> new EntityModel<>(book,
 						linkTo(methodOn(BookController.class).one(book.getId())).withSelfRel(),
 						linkTo(methodOn(BookController.class).all()).withRel("books")))
 				.collect(Collectors.toList());
 
 		return new CollectionModel<>(books, linkTo(methodOn(BookController.class).all()).withSelfRel());
+	}
 //	CollectionModel<EntityModel<BookEntity>> all(){
 //		List<EntityModel<BookEntity>> books= bookEntityService.findAll().stream().
 //				map(book -> new EntityModel<>(book, linkTo(methodOn(BookController.class).one(book.getId())).withSelfRel(), 
 //						linkTo(methodOn(BookController.class).all()).withRel("books"))).collect(Collectors.toList());
-	}
 
 //	@GetMapping("/employees")
 //	CollectionModel<EntityModel<Employee>> all() {
